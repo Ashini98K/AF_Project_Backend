@@ -1,10 +1,10 @@
-var express = require('express');
-var app = express();
-var bodyParser = require('body-parser')
-var mongo = require('mongoose')
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser')
+const mongo = require('mongoose')
 //var mongoUri = require('mongo');
-var UserModel = require('./models/user-model')
-var userApi = require('./api.js')
+const UserModel = require('./models/user-model')
+const userApi = require('./sample-controller.js')
 const cors = require('cors');
 
 app.use(cors());
@@ -23,10 +23,8 @@ app.route('/').get((req,res) => {
     res.send('SLIIT AF FINAL API');
 });
 
-app.route('/create').post((req,res) => {
-   
-    userApi.createUser(req,res)
-});
+//change only here
+app.use('/create-user',userApi());
 
 
 var server = app.listen(5000, function () {
