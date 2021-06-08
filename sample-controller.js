@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const controller = require('./test')
+const controller = require('./sample-service')
 
 module.exports = function(){
 

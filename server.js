@@ -5,6 +5,7 @@ const mongo = require('mongoose')
 //var mongoUri = require('mongo');
 const UserModel = require('./models/user-model')
 const userApi = require('./sample-controller.js')
+const agendaApi = require('./IT19167992/controllers/agenda-controller')
 const cors = require('cors');
 
 app.use(cors());
@@ -25,7 +26,7 @@ app.route('/').get((req,res) => {
 
 //change only here
 app.use('/create-user',userApi());
-
+app.use('/agenda',agendaApi());
 
 var server = app.listen(5000, function () {
     console.log('Node server is running..');
