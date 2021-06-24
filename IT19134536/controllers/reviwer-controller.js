@@ -1,12 +1,12 @@
-// const express = require('express')
-// const router = express.Router()
-// const service = require('../services/')
+const express = require('express')
+const router = express.Router()
+const service = require('../services/reviwer-service')
 
 
-// module.exports = function(){
+module.exports = function(){
 
-//     router.post('/view-posts-for-review',service.)
+    router.post('/view-posts-for-review',service.createConference)
 
-//     return router
+    return router
 
-// }
+}
