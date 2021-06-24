@@ -14,6 +14,24 @@ const createUser = async (req, res) => {
   }
 };
 
+const updateUser = async (req, res) => {
+  const typeadd = req.body.type;
+  console.log(typeadd);
+  await User.findByIdAndUpdate(
+    req.params.id,
+    { $set: { type: req.body.type } },
+    { upsert: true },
+    function (err, result) {
+      if (err) {
+        res.send(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+};
+
 module.exports = {
   createUser,
+  updateUser,
 };
