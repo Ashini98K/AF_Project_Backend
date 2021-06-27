@@ -6,7 +6,7 @@ const BackPanelUserModel = new mongoose.Schema({
     email : { type: String, required : true, trim : true},
     contactNumber : { type:String,required : true,trim : true},
     password : { type : String, required : true, trim : true},
-    role : { type : String, required : true, trim : true}
+    role : { type : String, required : false, trim : true}
 });
 
 const BackPanelUser = mongoose.model('backpanelusers',BackPanelUserModel);

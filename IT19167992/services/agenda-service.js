@@ -23,6 +23,18 @@ const getAgenda = async (req,res) => {
     });
 }
 
+const getEventbyId = async (req,res) => {
+    if (req.params && req.params.id) {
+        await Agenda.findById(req.params.id)
+            .populate('agendas', 'event person date startingTime endingTime venue')
+            .then(data => {
+                res.status(200).send({ agendas: data });
+            })
+            .catch(error => {
+                res.status(500).send({ error: error.message });
+            });
+    }
+}
 const updateAgenda = async (req,res) => {
     await Agenda.findByIdAndUpdate(
         req.params.id,
@@ -60,5 +72,6 @@ module.exports = {
     createAgenda,
     getAgenda,
     updateAgenda,
-    deleteAgenda
+    deleteAgenda,
+    getEventbyId
 };
