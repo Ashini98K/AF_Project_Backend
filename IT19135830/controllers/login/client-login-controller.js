@@ -1,7 +1,7 @@
 const bcrypt =require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-const User = require('../../IT19136134/models/user-model.js');
+const User = require('../../../IT19136134/models/user-model.js');
 
 const login = async( req, res) => {
     const {email,password} = req.body;
@@ -14,8 +14,15 @@ const login = async( req, res) => {
             return res.status(404).json({message:"User is not Registered."})
         }
 
+        //bcrypt is used to compare the password.for some reason it returns false for all correct or incorrect passwords
         const correctPassword = await bcrypt.compare(password, existingUser.password);
 
+        // if(!correctPassword){
+        //     return res.status(400).json({message: "Incorrect Password."})
+        // }
+
+
+        //comparison of password the user entered nd the saved password to verify the login
         if(password != existingUser.password){
             return res.status(400).json({message: "Incorrect Password."})
         }
