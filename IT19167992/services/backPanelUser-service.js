@@ -23,6 +23,19 @@ const getBackPanelUsers = async (req,res) => {
     });
 }
 
+const getBackPnaeluserById = async (req,res) => {
+    if(req.params && req.params.id){
+        await BackPanelUser.findById(req.params.id)
+        .populate('backpanelusers', 'name userName email contactNumber password role')
+        .then(data => {
+            res.status(200).send({ backpanelusers: data });
+        })
+        .catch(error => {
+            res.status(500).send({ error: error.message });
+        });
+    }   
+}
+
 const updateBackPanelUser = async ( req, res) =>{   
     await BackPanelUser.findByIdAndUpdate(
       req.params.id,
@@ -63,5 +76,6 @@ module.exports = {
     createBackPanelUser,
     getBackPanelUsers,
     updateBackPanelUser,
-    deleteBackPanelUser
+    deleteBackPanelUser,
+    getBackPnaeluserById
 };

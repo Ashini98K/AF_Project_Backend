@@ -4,13 +4,13 @@ const createProposal = async (req, res, next) => {
   if (req.body) {
     const proposal = new Proposal(req.body);
 
+    //getting the file path of the proposal uploaded
     if (req.file) {
       proposal.document = req.file.path;
     }
     await proposal
       .save()
       .then((data) => {
-        //res.status(200).send({ data: data });
         res.json({
           message: "Inserted Successfully",
           data: data,
@@ -26,9 +26,6 @@ const getProposal = async (req, res) => {
   await Proposal.find()
     .then((data) => {
       res.status(200).send({ data: data });
-      // res.json({
-      //   data,
-      // });
     })
     .catch((error) => {
       res.status(500).send({ error: error.message });

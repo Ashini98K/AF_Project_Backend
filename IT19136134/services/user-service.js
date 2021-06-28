@@ -1,5 +1,6 @@
 const User = require("../models/user-model");
 
+//saving the user data
 const createUser = async (req, res) => {
   if (req.body) {
     const user = new User(req.body);
@@ -14,6 +15,7 @@ const createUser = async (req, res) => {
   }
 };
 
+//updating the user table with the user type for the specific userId
 const updateUser = async (req, res) => {
   const typeadd = req.body.type;
   console.log(typeadd);
