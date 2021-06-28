@@ -10,7 +10,6 @@ const createResearch = async (req, res, next) => {
     await research
       .save()
       .then((data) => {
-        //res.status(200).send({ data: data });
         res.json({
           message: "Inserted Successfully",
           data: data,
@@ -26,9 +25,6 @@ const getResearch = async (req, res) => {
   await Research.find()
     .then((data) => {
       res.status(200).send({ data: data });
-      // res.json({
-      //   data,
-      // });
     })
     .catch((error) => {
       res.status(500).send({ error: error.message });
