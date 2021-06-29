@@ -3,9 +3,12 @@ const router = express.Router()
 const service = require('../services/reviwer-service')
 
 
+
 module.exports = function(){
 
-    router.post('/view-posts-for-review',service.createConference)
+    router.get('/view-posts-for-review',service.viewAllResearchForReview)
+
+    router.get('/view-workshop-for-review', service.viewAllWorkShopProposalForReview)
 
     return router
 

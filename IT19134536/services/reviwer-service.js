@@ -1,35 +1,29 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-const mongo = require('mongoose')
-const ConferenceModel = require('../models/conference')
+const ResearchPaperModel = require('../models/researcher')
+const WorkShopProposalModel = require('../models/work-shop-presenters')
 
 app.use(bodyParser.json())
 
 const viewAllResearchForReview = async (req, res) => {
 
-    if(req.body){
-        console.log(req.body)
-    const conference = new ConferenceModel(req.body)
-    conference.save().then((conference) => {
-        res.json(conference)
+    ResearchPaperModel.find().then((data) => {
+        res.json(data)
     }).catch(err => {
         res.status(500).send(err.message)
     })
-    }
+    
 }
 
 const viewAllWorkShopProposalForReview = async (req, res) => {
 
-    if(req.body){
-        console.log(req.body)
-    const conference = new ConferenceModel(req.body)
-    conference.save().then((conference) => {
-        res.json(conference)
+    WorkShopProposalModel.find().then((data) => {
+        res.json(data)
     }).catch(err => {
         res.status(500).send(err.message)
     })
-    }
+    
 }
 
-module.exports = {createConference,viewAllWorkShopProposalForReview}
+module.exports = {viewAllWorkShopProposalForReview, viewAllResearchForReview}
