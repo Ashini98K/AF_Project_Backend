@@ -4,9 +4,6 @@ const createResearch = async (req, res, next) => {
   if (req.body) {
     const research = new Research(req.body);
 
-    if (req.file) {
-      research.document = req.file.path;
-    }
     await research
       .save()
       .then((data) => {

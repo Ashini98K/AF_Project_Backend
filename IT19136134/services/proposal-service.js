@@ -4,10 +4,6 @@ const createProposal = async (req, res, next) => {
   if (req.body) {
     const proposal = new Proposal(req.body);
 
-    //getting the file path of the proposal uploaded
-    if (req.file) {
-      proposal.document = req.file.path;
-    }
     await proposal
       .save()
       .then((data) => {
