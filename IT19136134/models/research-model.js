@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const ResearchPaperModel = new mongoose.Schema({
-  userId: { type: String, required: true, trim: true },
+  userId:[{type:mongoose.Schema.Types.ObjectId, required:true, ref:'users'}],
   tittle: { type: String, required: true, trim: true },
   description: { type: String, required: true, trim: true },
   document: { type: String, required: true },

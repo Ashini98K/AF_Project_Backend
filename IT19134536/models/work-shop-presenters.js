@@ -1,17 +1,20 @@
 const mongo = require('mongoose')
 
 const WorkShopProposalModel = mongo.Schema({
-    userId:{
-        type:String
+    userId: {
+        type: String
     },
-    title:{
-        type:String
+    title: {
+        type: String
     },
-    description:{
-        type:String
+    description: {
+        type: String
     },
-    document:{
-        type:String
+    document: {
+        type: String
+    },
+    status: {
+        String
     }
 })
 

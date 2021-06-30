@@ -1,17 +1,18 @@
 const mongo = require('mongoose')
 
 const ResearchPaperModel = mongo.Schema({
-    userId:{
-        type:String
+    userId: [{ type: mongo.Schema.Types.ObjectId, required: false, ref: 'users' }],
+    title: {
+        type: String
     },
-    title:{
-        type:String
+    description: {
+        type: String
     },
-    description:{
-        type:String
-    },
-    document:{
-        type:String
+    document: {
+        type: String
+    }, 
+    status: {
+        String
     }
 })
 
