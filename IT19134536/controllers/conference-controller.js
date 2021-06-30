@@ -3,9 +3,15 @@ const router = express.Router()
 const service = require('../services/conference-service')
 
 
-module.exports = function(){
+module.exports = function () {
 
-    router.post('/add-details',service.createConference)
+    router.get('/get-conference-details', service.getConferenceDetails)
+
+    router.put('/update-conference-details', service.updateConferenceDetails)
+
+    router.post('/add-details', service.createConference)
+
+    router.post('/add-key-speakers', service.createKeySpeaker)
 
     return router
 

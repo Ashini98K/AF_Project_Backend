@@ -33,7 +33,18 @@ const updateUser = async (req, res) => {
   );
 };
 
+const getUserById = async (req, res) => {
+  await User.findById(req.params.id).then(response => {
+    console.log(response)
+    res.status(200).send(response);
+  }).catch((error) => {
+    res.status(500).send({ error: error.message });
+  });
+};
+
+
 module.exports = {
   createUser,
   updateUser,
+  getUserById
 };
