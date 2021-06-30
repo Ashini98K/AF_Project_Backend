@@ -1,5 +1,5 @@
-const User = require('../../IT19136134/models/user-model.js');
-const research = require('../../IT19136134/models/research-model.js')
+const User = require('../../../IT19136134/models/user-model.js');
+const research = require('../../../IT19136134/models/research-model.js')
 
 
 const getReseacher=  async (req, res) => {

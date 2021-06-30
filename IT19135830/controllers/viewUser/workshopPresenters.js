@@ -1,5 +1,5 @@
-const User = require('../../IT19136134/models/user-model.js');
-const  proposal = require('../../IT19136134/models/proposal-model.js')
+const User = require('../../../IT19136134/models/user-model.js');
+const  proposal = require('../../../IT19136134/models/proposal-model.js');
 
 
 const getPresenter=  async (req, res) => {
