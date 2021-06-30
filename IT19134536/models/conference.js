@@ -13,13 +13,13 @@ const ConferenceModel = mongo.Schema({
     conference_logo_link: {
         type: String
     },
-    conference_background_image_link: {
-        type: String
-    },
     conference_annoucement: {
         type: String
     },
     conference_venue: {
+        type: String
+    },
+    status: {
         type: String
     }
 })

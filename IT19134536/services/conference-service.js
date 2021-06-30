@@ -71,4 +71,44 @@ const createKeySpeaker = async (req, res) => {
     }
 }
 
-module.exports = { createConference, createKeySpeaker, getConferenceDetails, updateConferenceDetails }
+const acceptConference = async (req, res) => {
+    await ConferenceModel.findByIdAndUpdate(
+        req.body.id,
+        { $set: { status: "ACCEPTED" } },
+        { upsert: true },
+        function (err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+
+                res.send(result);
+            }
+        }
+    );
+
+    //call send Mail method to send the confermation email
+    sendMail(req.body.to, req.body.subject, req.body.message)
+
+}
+
+const rejectConference = async (req, res) => {
+
+    await ConferenceModel.findByIdAndUpdate(
+        req.params.id,
+        { $set: { status: 'REJECTED' } },
+        { upsert: true },
+        function (err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send(result);
+            }
+        }
+    );
+
+    //call send Mail method to send the confermation email
+    sendMail(req.body.to, req.body.subject, req.body.message)
+
+}
+
+module.exports = { createConference, createKeySpeaker, getConferenceDetails, updateConferenceDetails, acceptConference, rejectConference }

@@ -7,6 +7,10 @@ module.exports = function () {
 
     router.get('/get-conference-details', service.getConferenceDetails)
 
+    router.put('/approve-conference',)
+
+    router.put('/reject-conference',)
+
     router.put('/update-conference-details', service.updateConferenceDetails)
 
     router.post('/add-details', service.createConference)
