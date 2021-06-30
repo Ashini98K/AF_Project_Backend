@@ -7,9 +7,9 @@ module.exports = function () {
 
     router.get('/get-conference-details', service.getConferenceDetails)
 
-    router.put('/approve-conference',)
+    router.put('/approve-conference', service.acceptConference)
 
-    router.put('/reject-conference',)
+    router.put('/reject-conference', service.rejectConference)
 
     router.put('/update-conference-details', service.updateConferenceDetails)
 
